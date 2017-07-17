@@ -1,40 +1,37 @@
-﻿using GoldBox.Classes;
+﻿using System.Diagnostics;
+using GoldBox.Classes;
 
 namespace GoldBox.Engine
 {
-    internal class CmdItem
+    [DebuggerDisplay("{Name} size: {Size.ToString(\"X2\")}")]
+    public class CmdItem
     {
         public delegate void CmdDelegate();
 
-        int size;
-        string name;
-        CmdDelegate cmd;
+        public int Size { get; }
+        public string Name { get; }
+        CmdDelegate _cmd;
 
-        public CmdItem(int Size, string Name, CmdDelegate Cmd)
+        public CmdItem(int size, string name, CmdDelegate cmd)
         {
-            size = Size;
-            name = Name;
-            cmd = Cmd;
+            Size = size;
+            Name = name;
+            _cmd = cmd;
         }
 
         public void Run()
         {
-            cmd();
-        }
-
-        public string Name()
-        {
-            return name;
+            _cmd();
         }
 
         internal void Skip()
         {
-            VmLog.WriteLine("SKIPPING: {0}", name);
+            VmLog.WriteLine("SKIPPING: {0}", Name);
 
-            if (size == 0)
+            if (Size == 0)
                 gbl.ecl_offset += 1;
             else
-                ovr008.vm_LoadCmdSets(size);
+                ovr008.vm_LoadCmdSets(Size);
         }
     }
 }

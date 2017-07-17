@@ -52,6 +52,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CleanEightCharStringTests.cs" />
+    <Compile Include="EclTests.cs" />
+    <Compile Include="GameFiles.cs" />
     <Compile Include="ObjectVerifier.cs" />
     <Compile Include="ovr015Tests.cs" />
     <Compile Include="ovr017Tests.cs" />

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace GoldBox.Engine
 {
-    class ovr003
+    public class ovr003
     {
-        static Dictionary<int, CmdItem> CommandTable = new Dictionary<int, CmdItem>();
+        public static Dictionary<int, CmdItem> CommandTable = new Dictionary<int, CmdItem>();
         private static CodeWheel _codeWheel = new CodeWheel();
         internal static void CMD_Exit()
         {
@@ -2102,7 +2102,7 @@ namespace GoldBox.Engine
                 CmdItem cmd;
                 if (CommandTable.TryGetValue(gbl.command, out cmd))
                 {
-                    VmLog.WriteLine("{0} 0x{1:X}", cmd.Name(), gbl.command);
+                    VmLog.WriteLine("{0} 0x{1:X}", cmd.Name, gbl.command);
                     cmd.Run();
                 }
                 else
